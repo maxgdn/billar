@@ -1,8 +1,7 @@
 import React from 'react';
+import {Home} from './pages';
 
-import { RendererService } from './renderer-service';
-
-import { Button } from './button';
+import { RendererService } from '../renderer-service';
 
 type Props = {
   service: RendererService;
@@ -16,7 +15,7 @@ export const Application = ({ service }: Props) => {
   return (
     <div className="section container">
       <h1>Application loaded</h1>
-      <Button label="Toggle" onClick={onClick} />
+      <Home/>
     </div>
   );
 };

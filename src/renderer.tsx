@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 
 import { ipcRenderer } from 'electron';
 
-import { Application } from './application';
+import { Application } from './application/application';
 
 import { RendererService } from './renderer-service';
 

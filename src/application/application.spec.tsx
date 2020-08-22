@@ -6,7 +6,7 @@ jest.mock('fancy-log');
 
 import * as TestSubject from './application';
 
-import { RendererService } from './renderer-service';
+import { RendererService } from '../renderer-service';
 
 describe('Application', (): void => {
   const pingMock = jest.fn();

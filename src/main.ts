@@ -5,10 +5,13 @@ import { MainService } from './main-service';
 import * as log from 'fancy-log';
 import * as path from 'path';
 
+require('electron-reload')(__dirname);
+
 app
   .whenReady()
   .then((): void => {
-    const debug: boolean = process.env.DEBUG !== undefined;
+    //const debug: boolean = process.env.DEBUG !== undefined;
+    const debug: boolean = true;
     const browserWindow: BrowserWindow = new BrowserWindow({
       webPreferences: {
         defaultEncoding: 'UTF-8',
