@@ -1,0 +1,13 @@
+dist/
+test/
+
+package-lock.json
+
+e2e/screenshots
+
+*.css
+*.snap
+*.js
+*.js.map
+
+node_modules/
