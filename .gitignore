@@ -10,4 +10,6 @@ e2e/screenshots
 *.js
 *.js.map
 
+pnpm-lock.yaml
+
 node_modules/
