@@ -24,7 +24,7 @@ app
     });
 
     browserWindow.hide();
-    browserWindow.setMenuBarVisibility(false);
+    browserWindow.setMenuBarVisibility(true);
     browserWindow
       .loadFile(path.join(__dirname, 'index.html'))
       .then((): void => {

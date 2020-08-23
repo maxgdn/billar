@@ -1,7 +1,10 @@
 import React from 'react';
-import {Home} from './pages';
+import { Router } from "@reach/router";
+
+import {Home, Settings, Clients, Report} from './pages';
 
 import { RendererService } from '../renderer-service';
+import { SideNav } from './components';
 
 type Props = {
   service: RendererService;
@@ -14,8 +17,14 @@ export const Application = ({ service }: Props) => {
 
   return (
     <div className="section container">
-      <h1>Application loaded</h1>
-      <Home/>
+      <SideNav>
+        <Router>
+          <Home path="/"/>
+          <Settings path="/settings"/>
+          <Report path="/report"/>
+          <Clients path="/clients"/>
+        </Router>
+      </SideNav>
     </div>
   );
 };

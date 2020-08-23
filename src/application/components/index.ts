@@ -1,5 +1,9 @@
 import DateView from './dateview';
+import SideNav from './sidenav';
+import Title from './title';
 
 export {
-    DateView
+    DateView,
+    SideNav,
+    Title
 };
