@@ -44,7 +44,6 @@ const Path = styled(Link)`
 
     &:hover {
         color: ${colors.tertiary};
-        text-decoration: underline;
         transform: scale(1.03);
     }
 `;
