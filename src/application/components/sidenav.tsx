@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components'
-import { Link } from "@reach/router";
+import { Link, LinkProps } from "@reach/router";
 
 import Title from './title';
 import DateView from './dateview';
@@ -34,18 +34,29 @@ const Nav = styled.div<Props>`
     padding-top: 20px;
 `;
 
-const Path = styled(Link)`
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
+interface PathProps {
+    self: number;
+    selected: number;
+}
+
+const Path = styled(Link)<PathProps & LinkProps<any>>`
+    margin: 0 auto;
+    padding: 8px 16px;
+    text-decoration: ${(props) => (props.selected === props.self) ? 'underline' : 'none'};
+    font-size: 1.4rem;
     color: ${colors.white};
     display: block;
     transition: 0.3s;
 
     &:hover {
-        color: ${colors.tertiary};
         transform: scale(1.03);
     }
+`;
+
+const PathCenterContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 `;
 
 const CloseButton = styled.div`
@@ -66,6 +77,8 @@ const TitleWrapper = styled(Title)`
 const TitleCenterContainer = styled.div`
     display: flex;
     justify-content: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 `;
 
 const DateWrapper = styled.div`
@@ -100,14 +113,33 @@ const Times = styled.div`
     
 `;
 
+interface PathItem {
+    id: number;
+    route: string;
+    name: string;
+}
+
+const paths: PathItem[] = [
+    {id: 0, route: '/', name: 'Home'},
+    {id: 1, route: '/clients', name: 'Clients'},
+    {id: 2, route: '/report', name: 'Report' },
+    {id: 3, route: '/settings',name: 'Settings'},
+]
+
 const SideNav: React.FC = (props) => {
     const [visible,setVisible] = useState(true);
+    const [selected,setSelected] = useState(0);
 
     const flipNav = () => {
 
         setVisible(!visible);
     }
 
+    const chosen = (index: number) => {
+        console.log(index)
+        setSelected(index);
+    }
+ 
     return (
         <Container visible={visible}>
             <Nav visible={visible}>
@@ -119,11 +151,12 @@ const SideNav: React.FC = (props) => {
                             Billar
                         </TitleWrapper>
                     </TitleCenterContainer>
+                    <PathCenterContainer>
+                        {paths.map((item: PathItem) => {
+                            return <Path to={item.route} onClick={() => chosen(item.id)} self={item.id} selected={selected}>{item.name}</Path>;
+                        })}
+                    </PathCenterContainer>
                     
-                    <Path to={'/'}>Home</Path>
-                    <Path to={'/clients'}>Clients</Path>
-                    <Path to={'/report'}>Report</Path>
-                    <Path to={'/settings'}>Settings</Path>
 
                    
                         
