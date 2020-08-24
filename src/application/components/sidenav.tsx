@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Link } from "@reach/router";
 
 import Title from './title';
+import DateView from './dateview';
 
 import colors from '../colors';
 
@@ -63,10 +64,26 @@ const TitleWrapper = styled(Title)`
     padding-right: 10px;
     border-radius: 5px;
 `
-const TitleContainer = styled.div`
+const TitleCenterContainer = styled.div`
     display: flex;
     justify-content: center;
 `;
+
+const DateWrapper = styled.div`
+    width: 100%;
+    position: absolute;
+    bottom: 30px;
+`;
+
+const DateCenterContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 100%;
+`;
+
+interface VisibleProps {
+    time: string;
+}
 
 const VisibleContainer = styled.div<Props>`
     width: 100%;
@@ -98,13 +115,29 @@ const SideNav: React.FC = (props) => {
                 <CloseButton>{visible ? <Times onClick={flipNav}>&times;</Times> : <Arrow onClick={flipNav}>▶</Arrow>}</CloseButton>
                 
                 <VisibleContainer visible={visible}>
-                    <TitleContainer><TitleWrapper>Billar</TitleWrapper></TitleContainer>
+                    <TitleCenterContainer>
+                        <TitleWrapper>
+                            Billar
+                        </TitleWrapper>
+                    </TitleCenterContainer>
                     
                     <Path to={'/'}>Home</Path>
                     <Path to={'/clients'}>Clients</Path>
                     <Path to={'/report'}>Report</Path>
                     <Path to={'/settings'}>Settings</Path>
+
+                   
+                        
+                    
                 </VisibleContainer>
+
+                <DateWrapper>
+                    <VisibleContainer visible={visible}>
+                        <DateCenterContainer>
+                            <DateView/>
+                        </DateCenterContainer>
+                    </VisibleContainer>
+                </DateWrapper>  
             </Nav>
             {props.children}
         </Container>
