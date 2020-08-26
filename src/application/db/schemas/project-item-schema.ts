@@ -1,4 +1,4 @@
-import { ProjectItem } from '../../domain';
+import { ProjectItem, UUID } from '../../domain';
 
 import {
     RxCollection,
@@ -8,22 +8,25 @@ import {
 
 type ProjectItemDocMethods = {};
 
-type ProjectItemDocument = RxDocument<ProjectItem, ProjectItemDocMethods>;
+type ProjectItemDocument = RxDocument<UUID<ProjectItem>, ProjectItemDocMethods>;
 
 type ProjectItemCollectionMethods = {}
 
 type ProjectItemCollection = RxCollection<ProjectItemDocument, ProjectItemDocMethods, ProjectItemCollectionMethods>;
 
-const projectItemSchema: RxJsonSchema<ProjectItem> = {
+const projectItemSchema: RxJsonSchema<UUID<ProjectItem>> = {
     title: 'project item schema',
     description: 'describes project item',
     version: 0,
     keyCompression: true,
     type: 'object',
     properties: {
+        id: {
+            type: 'string',
+            primary: true,
+        },
         title: {
             type: 'string',
-            primary: true
         },
         time: {
             type: 'time'
@@ -45,7 +48,7 @@ const projectItemDocMethods: ProjectItemDocMethods = {};
 const projectItemCollectionMethods: ProjectItemCollectionMethods = {};
 
 const projectItemCollectionObj = {
-    name: 'project-item',
+    name: 'project-items',
     schema: projectItemSchema,
     methods: projectItemDocMethods,
     statics: projectItemCollectionMethods

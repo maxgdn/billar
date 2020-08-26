@@ -2,9 +2,9 @@ import { Billable, ProjectItem } from '.';
 
 interface Project {
     name: string;
-    startDate: number;
-    endDate: number;
-    lastModified: number;
+    startDate: Date;
+    endDate: Date;
+    lastModified: Date;
     billable: Billable;
     items: ProjectItem[];
 }

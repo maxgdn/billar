@@ -5,18 +5,25 @@ import {
 } from 'rxdb';
 
 import {
+    ProjectCollection,
+    projectCollectionObj,
     ProjectItemCollection,
-    projectItemCollectionObj
+    projectItemCollectionObj,
+    ClientCollection, 
+    clientCollectionObj,
+    SettingsCollection,
+    settingsCollectionObj
 } from './schemas';
 
 /*
-String values MUST be one of the six primitive types:
- ("null", "boolean", "object", "array", "number", or "string"), 
- or "integer" which matches any number with a zero fractional part.
+    https://json-schema.org/understanding-json-schema/reference/
 */
 
 type MyDatabaseCollections = {
+    projects: ProjectCollection
     projectItems: ProjectItemCollection
+    clients: ClientCollection
+    settings: SettingsCollection
 }
 
 addRxPlugin(require('pouchdb-adapter-idb'));
@@ -28,7 +35,7 @@ const getDatabase = (name: string) => {
 }
 
 const createDatabase = async (name: string) => {
-    const db = await createRxDatabase({
+    const db = await createRxDatabase<MyDatabaseCollections>({
         name: name,           // <- name
         adapter: 'idb',          // <- storage-adapter
         password: 'password',     // <- password (optional)
@@ -36,7 +43,10 @@ const createDatabase = async (name: string) => {
         eventReduce: false // <- eventReduce (optional, default: true)
       });
 
+      await db.collection(projectCollectionObj);
       await db.collection(projectItemCollectionObj);
+      await db.collection(clientCollectionObj);
+      await db.collection(settingsCollectionObj);
 }
 
 export {getDatabase};
