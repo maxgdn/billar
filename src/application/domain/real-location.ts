@@ -1,14 +1,8 @@
 
-class RealLocation {
-    public address: string;
-    public city: string;
-    public code: string;
-
-    constructor(address: string, city: string, code: string){
-        this.address = address;
-        this.city = city;
-        this.code = code;
-    }
+interface RealLocation {
+    address: string;
+    city: string;
+    code: string;
 }
 
 export default RealLocation;

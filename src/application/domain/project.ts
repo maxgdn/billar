@@ -2,11 +2,12 @@ import { Billable, ProjectItem } from '.';
 
 interface Project {
     name: string;
-    startDate: Date;
-    endDate: Date;
-    lastModified: Date;
+    startDate: number;
+    endDate: number;
+    lastModified: number;
     billable: Billable;
     items: ProjectItem[];
+    totalCost: number;
 }
 
 export default Project;

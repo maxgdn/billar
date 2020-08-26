@@ -144,7 +144,7 @@ const SideNav: React.FC = (props) => {
         <Container visible={visible}>
             <Nav visible={visible}>
                 <CloseButton>{visible ? <Times onClick={flipNav}>&times;</Times> : <Arrow onClick={flipNav}>▶</Arrow>}</CloseButton>
-                
+
                 <VisibleContainer visible={visible}>
                     <TitleCenterContainer>
                         <TitleWrapper>
@@ -156,11 +156,6 @@ const SideNav: React.FC = (props) => {
                             return <Path to={item.route} onClick={() => chosen(item.id)} self={item.id} selected={selected}>{item.name}</Path>;
                         })}
                     </PathCenterContainer>
-                    
-
-                   
-                        
-                    
                 </VisibleContainer>
 
                 <DateWrapper>

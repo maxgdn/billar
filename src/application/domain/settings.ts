@@ -1,13 +1,9 @@
 import {Contact} from './index';
 
-class Settings {
-    public contractorIcon?: string;
-    public contact?: Contact;
-    public notifications?: boolean;
-
-    constructor() {
-
-    }
+interface Settings {
+    contractorIcon?: string;
+    contact?: Contact;
+    notifications?: boolean;
 }
 
 export default Settings;

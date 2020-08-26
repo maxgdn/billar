@@ -1,7 +1,25 @@
-import { createRxDatabase, addRxPlugin } from 'rxdb';
+import {
+    createRxDatabase,
+    addRxPlugin,
+    RxDatabase,
+} from 'rxdb';
+
+import {
+    ProjectItemCollection,
+    projectItemCollectionObj
+} from './schemas';
+
+/*
+String values MUST be one of the six primitive types:
+ ("null", "boolean", "object", "array", "number", or "string"), 
+ or "integer" which matches any number with a zero fractional part.
+*/
+
+type MyDatabaseCollections = {
+    projectItems: ProjectItemCollection
+}
 
 addRxPlugin(require('pouchdb-adapter-idb'));
-
 
 let _getDatabase: any; // cached
 const getDatabase = (name: string) => {
@@ -17,6 +35,8 @@ const createDatabase = async (name: string) => {
         multiInstance: true,         // <- multiInstance (optional, default: true)
         eventReduce: false // <- eventReduce (optional, default: true)
       });
+
+      await db.collection(projectItemCollectionObj);
 }
 
 export {getDatabase};

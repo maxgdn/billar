@@ -2,8 +2,8 @@ import { Billable,ProjectItemInformation } from '.';
 
 interface ProjectItem {
     title: string;
-    time: Date;
-    createdOn: Date;
+    time: string;
+    createdOn: string;
     information: ProjectItemInformation;
     billable: Billable;
 }
