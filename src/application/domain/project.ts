@@ -7,7 +7,6 @@ interface Project {
     lastModified: number;
     billable: Billable;
     items: ProjectItem[];
-    totalCost: number;
 }
 
 export default Project;
