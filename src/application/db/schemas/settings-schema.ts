@@ -43,10 +43,10 @@ const settingsDocMethods: SettingsDocMethods = {};
 const settingsCollectionMethods: SettingsCollectionMethods = {};
 
 const settingsCollectionObj = {
-    name: 'projects',
+    name: 'settings',
     schema: projectItemSchema,
     methods: settingsDocMethods,
     statics: settingsCollectionMethods
 }
 
-export {SettingsCollection, settingsCollectionObj};
+export {SettingsCollection, settingsCollectionObj, SettingsDocument};

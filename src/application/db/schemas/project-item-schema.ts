@@ -29,10 +29,10 @@ const projectItemSchema: RxJsonSchema<UUID<ProjectItem>> = {
             type: 'string',
         },
         time: {
-            type: 'time'
+            type: 'string'
         },
         createdOn: {
-            type: 'date'
+            type: 'string'
         },
         information: {
             type: 'object'
@@ -48,7 +48,7 @@ const projectItemDocMethods: ProjectItemDocMethods = {};
 const projectItemCollectionMethods: ProjectItemCollectionMethods = {};
 
 const projectItemCollectionObj = {
-    name: 'project-items',
+    name: 'project_items',
     schema: projectItemSchema,
     methods: projectItemDocMethods,
     statics: projectItemCollectionMethods

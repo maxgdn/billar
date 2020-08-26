@@ -30,19 +30,19 @@ const projectItemSchema: RxJsonSchema<UUID<Project>> = {
             type: 'string',
         },
         startDate: {
-            type: 'date'
+            type: 'number'
         },
         endDate: {
-            type: 'date'
+            type: 'number'
         },
         lastModified: {
-            type: 'date'
+            type: 'number'
         },
         billable: {
             type: 'string'
         },
         items: {
-            ref: 'project-items',
+            ref: 'project_items',
             type: 'string'
         }
     },
