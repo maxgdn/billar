@@ -5,7 +5,7 @@ import { Router } from "@reach/router";
 import {Home, Settings, Clients, Report} from './pages';
 
 import { RendererService } from '../renderer-service';
-import { SideNav } from './components';
+import { SideNav, Modal, FirstUse } from './components';
 
 type Props = {
   service: RendererService;
@@ -28,6 +28,7 @@ export const Application = ({ service }: Props) => {
   return (
     <div className="section container">
       <GlobalStyle/>
+      <FirstUse/>
       <SideNav>
         <Router>
           <Home path="/"/>

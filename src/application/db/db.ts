@@ -34,6 +34,11 @@ const getDatabase = async (name: string) => {
     return _getDatabase;
 }
 
+const close = async () => {
+    let db = await getDatabase('test');
+    db.destroy();
+}
+
 const createDatabase = async (name: string) => {
     try {
         const db = await createRxDatabase<MyDatabaseCollections>({
